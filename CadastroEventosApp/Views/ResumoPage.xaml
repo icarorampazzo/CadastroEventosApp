@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:CadastroEventosApp.ViewModels"
+             x:Class="CadastroEventosApp.Views.ResumoPage"
+             x:DataType="vm:ResumoViewModel"
+             Title="Resumo do Evento">
+
+    <ContentPage.BindingContext>
+        <vm:ResumoViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="10">
+            <Label 
+                Text="Evento Cadastrado!"
+                FontSize="Title"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                TextColor="Green" />
+
+            <!-- Requisito 3: Apresentar o resumo -->
+            <Frame Padding="20" CornerRadius="10" Margin="0,15,0,0">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="{Binding Evento.Nome}" FontSize="Header" HorizontalOptions="Center" />
+
+                    <Label Text="Local:" FontAttributes="Bold" />
+                    <Label Text="{Binding Evento.Local}" />
+
+                    <Label Text="Período:" FontAttributes="Bold" />
+                    <!-- Formatação de data -->
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="De " />
+                                <Span Text="{Binding Evento.DataInicio, StringFormat='{0:dd/MM/yyyy}'}" />
+                                <Span Text=" até " />
+                                <Span Text="{Binding Evento.DataTermino, StringFormat='{0:dd/MM/yyyy}'}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label Text="Duração (em dias):" FontAttributes="Bold" />
+                    <Label Text="{Binding Evento.DuracaoEmDias}" />
+
+                    <Label Text="Nº de Participantes:" FontAttributes="Bold" />
+                    <Label Text="{Binding Evento.NumeroParticipantes}" />
+
+                    <Label Text="Custo por Participante:" FontAttributes="Bold" />
+                    <!-- Formatação de moeda (Currency) -->
+                    <Label Text="{Binding Evento.CustoPorParticipante, StringFormat='{0:C}'}" />
+
+                    <BoxView HeightRequest="1" Color="LightGray" Margin="0,10" />
+
+                    <Label Text="CUSTO TOTAL DO EVENTO:" FontAttributes="Bold" FontSize="Medium" />
+                    <!-- Custo total calculado e formatado -->
+                    <Label 
+                        Text="{Binding Evento.CustoTotal, StringFormat='{0:C}'}" 
+                        FontSize="Large" 
+                        TextColor="Green"
+                        FontAttributes="Bold" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button 
+                Text="Cadastrar Novo Evento" 
+                Clicked="OnVoltarClicked" 
+                HorizontalOptions="Fill" 
+                CornerRadius="20"
+                Margin="0,20,0,0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

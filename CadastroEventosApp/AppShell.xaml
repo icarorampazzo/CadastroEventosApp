@@ -3,12 +3,14 @@
     x:Class="CadastroEventosApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:CadastroEventosApp"
+    xmlns:views="clr-namespace:CadastroEventosApp.Views"
+    Shell.FlyoutBehavior="Disabled"
     Title="CadastroEventosApp">
 
+    <!-- Define a página inicial (CadastroPage) -->
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="Cadastro"
+        ContentTemplate="{DataTemplate views:CadastroPage}"
+        Route="CadastroPage" />
 
 </Shell>

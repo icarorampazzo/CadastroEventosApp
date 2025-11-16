@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:CadastroEventosApp.ViewModels"
+             x:Class="CadastroEventosApp.Views.CadastroPage"
+             x:DataType="vm:CadastroViewModel"
+             Title="Cadastro de Evento">
+
+    <!-- Requisito 1: Utilize o BindingContext -->
+    <ContentPage.BindingContext>
+        <vm:CadastroViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="15">
+            <Label 
+                Text="Cadastro de Novo Evento"
+                FontSize="Title"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" />
+
+            <Frame Padding="10" CornerRadius="10" BorderColor="LightGray">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Nome do Evento" />
+                    <Entry Text="{Binding Evento.Nome}" Placeholder="Ex: Conferência MAUI" />
+
+                    <Label Text="Local do Evento" />
+                    <Entry Text="{Binding Evento.Local}" Placeholder="Ex: Centro de Convenções" />
+
+                    <Label Text="Data de Início" />
+                    <DatePicker Date="{Binding Evento.DataInicio}" Format="dd/MM/yyyy" />
+
+                    <Label Text="Data de Término" />
+                    <DatePicker Date="{Binding Evento.DataTermino}" Format="dd/MM/yyyy" />
+
+                    <Label Text="Número de Participantes" />
+                    <Entry Text="{Binding Evento.NumeroParticipantes}" Keyboard="Numeric" />
+
+                    <Label Text="Custo por Participante (R$)" />
+                    <Entry Text="{Binding Evento.CustoPorParticipante}" Keyboard="Numeric" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button 
+                Text="Cadastrar Evento" 
+                Command="{Binding CadastrarCommand}" 
+                HorizontalOptions="Fill" 
+                CornerRadius="20"
+                Margin="0,15,0,0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
