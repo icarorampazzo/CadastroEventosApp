@@ -15,7 +15,7 @@ namespace CadastroEventosApp.Models
         private string _local;
         private decimal _custoPorParticipante;
 
-        // Propriedades Públicas (para o Binding)
+        // Propriedades Públicas
         public string Nome
         {
             get => _nome;
@@ -30,7 +30,7 @@ namespace CadastroEventosApp.Models
                 if (SetProperty(ref _dataInicio, value))
                 {
                     // Se a data de início mudar, notifique a UI
-                    // que as propriedades calculadas também mudaram.
+                    // que as propriedades calculadas também mudaram
                     OnPropertyChanged(nameof(Duracao));
                     OnPropertyChanged(nameof(DuracaoEmDias));
                 }
@@ -44,7 +44,7 @@ namespace CadastroEventosApp.Models
             {
                 if (SetProperty(ref _dataTermino, value))
                 {
-                    // O mesmo para a data de término.
+                    // O mesmo para a data de término
                     OnPropertyChanged(nameof(Duracao));
                     OnPropertyChanged(nameof(DuracaoEmDias));
                 }

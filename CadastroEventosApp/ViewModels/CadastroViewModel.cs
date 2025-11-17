@@ -42,7 +42,7 @@ namespace CadastroEventosApp.ViewModels
             // Navega para a "ResumoPage" (que vamos registrar no AppShell)
             await Shell.Current.GoToAsync("ResumoPage", navigationParameter);
 
-            // Opcional: Reseta o formulário criando um novo evento
+            
             // O Binding com 'Evento' na UI será atualizado
             Evento = new Evento();
         }
